@@ -7,11 +7,13 @@ cookie = os.getenv("COOKIE")
 
 params = {
     "can_support_threading": True,
+    "sort_order": "popular",
     "min_id": dumps({
         "cached_comments_cursor": "18004392299258417", 
         "bifilter_token": "KD8BDAB4ACAAGAAQABAACACn_f_6ff3c7N9_t-__9__gPvbH4rzx_zD_5___vz3n_f9-wv__f_77IZtqZpAZsUAA"
+        # "cached_comments_cursor": None, 
+        # "bifilter_token": None
     }),
-    "sort_order": "popular"
 }
 
 headers = {
@@ -28,7 +30,7 @@ print(res)
 #     print(comment['text'])
 
 
-with open('file5.json', 'w') as file:
+with open('file6.json', 'w') as file:
     file.write(dumps(res.json(), ensure_ascii=False, indent=2))
 
 

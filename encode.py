@@ -17,6 +17,6 @@ def getMediaIdFromUrl(shortened_id):
     for char in shortened_id:
         media_id = media_id * 64 + alphabet.index(char)
 
-    print(media_id)
+    print(type(media_id))
 
 getMediaIdFromUrl('CytLNXGBGYs')
