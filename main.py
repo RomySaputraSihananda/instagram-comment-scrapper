@@ -23,15 +23,13 @@ headers = {
 
 # res = requests.get('https://www.instagram.com/api/v1/media/3260617099286381188/comments/?cached_comments_cursor=15',headers=headers)
 # res = requests.get('https://www.instagram.com/api/v1/media/3260617099286381188/comments/?can_support_threading=true&permalink_enabled=true',headers=headers)
-res = requests.get('https://www.instagram.com/api/v1/media/3260617099286381188/comments/', headers=headers, params=params)
+res = requests.get('https://www.instagram.com/api/v1/media/3246603194377677047/comments/', headers=headers, params=params)
 
-print(res)
 # for comment in res.json()['comments']:
 #     print(comment['text'])
 
+# res = requests.get('https://www.instagram.com/api/v1/media/3246603194377677047/comments/18098933587367200/child_comments/?min_id=QVFBWm1seWZuOHdlVG9KdjZ0NUNaQWgtS2lMMXNaMDBiQzd5blFkV3BIcGlUdEM5VGdIbmU1d2h3RVhjWFR1TXFhRTBEVC0wZFdhTnBCM2JsbFd4ZkxkbQ==', headers=headers)
+print(res)
 
-with open('file6.json', 'w') as file:
+with open('file.json', 'w') as file:
     file.write(dumps(res.json(), ensure_ascii=False, indent=2))
-
-
-# https://www.instagram.com/api/v1/media/3268838954052919246/comments/?can_support_threading=true&min_id=%7B%22cached_comments_cursor%22%3A%20%2217872723323022949%22%2C%20%22bifilter_token%22%3A%20%22KJEBAEGOGvXcRkAAQXfk6DMDQABEYmG4Bvw_AIeCkx19QUAAyqzPOskCQACLK4uf87xAAA5867fchz8AE3RBHGT4PwDfJ_z2yP8_AGGQOeLf3T8AI7kk6gz2PwCmarHgWmZBAOhszII17T8Ab8cMfNT6PwBw9XOYlxpAAPNOU8y_4j8A9xSNePIUQAA7W45ka5U_AAA%3D%22%7D&sort_order=popular
