@@ -42,28 +42,21 @@ class Comment:
                 sleep(1)
 
             if(not response['has_more_head_child_comments']): break
+            
             min_id: str = response['next_min_child_cursor'] 
 
     def __filter_comments(self, response: dict) -> None:
-        if(not response['comments']): return True
+        for comment in response['comments']:
+            print(comment['text'])
 
-        from time import perf_counter
-
-        with open(f'{perf_counter()}.json', 'w') as file:
-            file.write(dumps(response, indent=2, ensure_ascii=False))
-
-        sleep(3)
-
-
-        self.__min_id = response['next_min_id']
-
-        # for comment in response['comments']:
-        #     print(comment['text'])
-
-        #     if(not comment['child_comment_count']): continue
-        #     self.__get_reply_comment(comment['pk'])
+            if(comment['child_comment_count']): self.__get_reply_comment(comment['pk'])
             
-        #     sleep(1)
+            sleep(1)
+
+        if (not 'next_min_id' in response): return True 
+
+        self.__min_id = response['next_min_id'] 
+
         
     def excecute(self, post_id: str):
         self.__media_id = self.__dencode_media_id(post_id)
