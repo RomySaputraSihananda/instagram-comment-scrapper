@@ -14,6 +14,8 @@ class Comment:
         self.__min_id: str =  None
         
         self.__result: dict = {}
+        self.__result["username"]: str = None
+        self.__result["full_name"]: str = None
         self.__result["caption"]: str = None
         self.__result["date_now"]: str = None
         self.__result["create_at"]: str = None
@@ -107,8 +109,8 @@ class Comment:
 
             if(not self.__result['comments']): 
                 print('ok')
-                self.__result["username"]: data["user"]["username"]
-                self.__result["full_name"]: data["user"]["full_name"]
+                self.__result["username"]: str = data["caption"]["user"]["username"]
+                self.__result["full_name"]: str = data["caption"]["user"]["full_name"]
                 self.__result["caption"]: str = data["caption"]["text"]
                 self.__result["date_now"]: str = self.__format_date(round(time() * 1000))
                 self.__result["create_at"]: str = self.__format_date(data["caption"]["created_at"])
