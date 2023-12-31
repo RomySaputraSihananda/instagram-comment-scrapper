@@ -132,17 +132,3 @@ if(__name__ == '__main__'):
     data: dict = comment.excecute('Cm2cJmABD1p')
     with open('test_data.json', 'w') as file:
         file.write(dumps(data, indent=2, ensure_ascii=False))
-
-# "caption": "mau oleng ke siapapun tetep aja pulang lagi ke freya😣 #freyajkt48 #freyajayawardana #fypシ ",
-# "date_now": "2023-12-22T21:24:08",
-# "video_url": "https://t.tiktok.com/i18n/share/video/7299013864170032390/?_d=0&comment_author_id=6789225331385418754&mid=6703154980951427074&preview_pb=0&region=ID&share_comment_id=7299627887044461317&share_item_id=7299013864170032390&sharer_language=en&source=h5_t&u_code=0",
-# "comments": [
-# {
-#     "username": "ryzzhighinthesky",
-#     "nickname": "Not Ryz",
-#     "comment": "freya aku mau cbr😣😣",
-#     "create_time": "2023-11-10T07:44:48",
-#     "avatar": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/4c3c29930e3420f1119852fee1767dea~c5_100x100.jpg?x-expires=1703340000&x-signature=j00DUxk%2B8pIXiUjAO3n%2Bs9dOWjo%3D",
-#     "total_reply": 0,
-#     "replies": []
-# },')
