@@ -5,6 +5,7 @@ from json import dumps
 from dotenv import load_dotenv
 from time import sleep
 from datetime import datetime
+from time import time
 
 from comment.helpers import logging
 
@@ -106,10 +107,10 @@ class Comment:
 
             if(not self.__result['comments']): 
                 print('ok')
-                self.__result["username"]: comment["user"]["username"],
-                self.__result["full_name"]: comment["user"]["full_name"],
+                self.__result["username"]: data["user"]["username"]
+                self.__result["full_name"]: data["user"]["full_name"]
                 self.__result["caption"]: str = data["caption"]["text"]
-                self.__result["date_now"]: str = "hehe"
+                self.__result["date_now"]: str = self.__format_date(round(time() * 1000))
                 self.__result["create_at"]: str = self.__format_date(data["caption"]["created_at"])
                 self.__result["post_url"]: str = f"https://instagram.com/p/{post_id}"
 
