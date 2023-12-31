@@ -1,6 +1,6 @@
 [![Twitter: romy](https://img.shields.io/twitter/follow/RomySihananda)](https://twitter.com/RomySihananda)
 
-# tiktok-comment-scrapper
+# instagram-comment-scrapper
 
 ![](https://raw.githubusercontent.com/RomySaputraSihananda/RomySaputraSihananda/main/images/GA-U-u2bsAApmn9.jpeg)
 Get all comments from tiktok video url or id
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ## Example Usages
 
 ```sh
-python main.py --url=7170139292767882522 --size=10 --output=data
+python main.py --url=7170139292767882522 --output=data
 ```
 
 ### Flags
@@ -34,7 +34,6 @@ python main.py --url=7170139292767882522 --size=10 --output=data
 | Flag     | Alias |           Description           | Example         |       Default       |
 | :------- | :---: | :-----------------------------: | :-------------- | :-----------------: |
 | --url    |  -u   | Url or video id of tiktok video | --url=id or url | 7170139292767882522 |
-| --size   |  -s   |       number of comments        | --size=10       |         50          |
 | --output |  -o   |      json file output path      | --output=data   |        data         |
 
 ## Sample Output
