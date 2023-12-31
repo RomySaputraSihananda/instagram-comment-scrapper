@@ -4,20 +4,33 @@ from requests import Session, Response
 from json import dumps
 from dotenv import load_dotenv
 from time import sleep
+from datetime import datetime
 
 from comment.helpers import logging
 
 class Comment:
     def __init__(self, cookie: str) -> None:
         self.__min_id: str =  None
-        self.__requests : Session = Session()
+        
         self.__result: dict = {}
+        self.__result["caption"]: str = None
+        self.__result["date_now"]: str = None
+        self.__result["create_at"]: str = None
+        self.__result["post_url"]: str = None
         self.__result['comments']: list = []
         
+        self.__requests : Session = Session()
         self.__requests.headers.update({
             "Cookie": cookie,
             "User-Agent": "Instagram 126.0.0.25.121 Android (23/6.0.1; 320dpi; 720x1280; samsung; SM-A310F; a3xelte; samsungexynos7580; en_GB; 110937453)"
         })
+
+    def __format_date(self, milisecond: int) -> str:
+        try:
+            return datetime.fromtimestamp(milisecond).strftime("%Y-%m-%dT%H:%M:%S")
+        except:
+            return datetime.fromtimestamp(milisecond / 1000).strftime("%Y-%m-%dT%H:%M:%S")
+
 
     def __dencode_media_id(self, post_id: str) -> int:
         alphabet: str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'
@@ -41,16 +54,17 @@ class Comment:
 
         while True:
             response: Response = self.__requests.get(f'https://www.instagram.com/api/v1/media/{self.__media_id}/comments/{comment_id}/child_comments/?min_id={min_id}').json()
-            
-            for comment in response['child_comments']:
-                child_comments.append({
+
+            child_comments.extend([
+                {
                     "username": comment["user"]["username"],
                     "full_name": comment["user"]["full_name"],
                     "comment": comment["text"],
-                    "create_time": comment["created_at"],
+                    "create_time": self.__format_date(comment["created_at"]),
                     "avatar": comment["user"]["profile_pic_url"],
                     "total_like": comment["comment_like_count"],
-                })
+                } for comment in response['child_comments']
+            ])
 
             if(not response['has_more_head_child_comments']): break
             
@@ -67,7 +81,7 @@ class Comment:
                 "username": comment["user"]["username"],
                 "full_name": comment["user"]["full_name"],
                 "comment": comment["text"],
-                "create_time": comment["created_at"],
+                "create_time": self.__format_date(comment["created_at"]),
                 "avatar": comment["user"]["profile_pic_url"],
                 "total_like": comment["comment_like_count"],
                 "total_reply": comment["child_comment_count"],
@@ -86,7 +100,20 @@ class Comment:
         while(True):
             response: Response = self.__requests.get(f'https://www.instagram.com/api/v1/media/{self.__media_id}/comments/', params=self.__build_params())
 
-            if(self.__filter_comments(response.json())): break
+            if(response.status_code != 200): return
+
+            data: dict = response.json() 
+
+            if(not self.__result['comments']): 
+                print('ok')
+                self.__result["username"]: comment["user"]["username"],
+                self.__result["full_name"]: comment["user"]["full_name"],
+                self.__result["caption"]: str = data["caption"]["text"]
+                self.__result["date_now"]: str = "hehe"
+                self.__result["create_at"]: str = self.__format_date(data["caption"]["created_at"])
+                self.__result["post_url"]: str = f"https://instagram.com/p/{post_id}"
+
+            if(self.__filter_comments(data)): break
         
         return self.__result
 
@@ -99,7 +126,7 @@ if(__name__ == '__main__'):
     comment: Comment = Comment(cookie)
     # comment.excecute('C1ACfnvh4KE')
     # comment.excecute('C1Ww1LChZhN')
-    data: dict = comment.excecute('C1f8TcBhGSi')
+    data: dict = comment.excecute('Cm2cJmABD1p')
     with open('test_data.json', 'w') as file:
         file.write(dumps(data, indent=2, ensure_ascii=False))
 
