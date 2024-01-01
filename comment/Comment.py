@@ -10,7 +10,9 @@ from time import time
 from comment.helpers import logging
 
 class Comment:
-    def __init__(self, cookie: str) -> None:
+    def __init__(self, cookie: str = None) -> None:
+        if(not cookie): return logging.error('cookie required !')
+
         self.__min_id: str =  None
         
         self.__result: dict = {}
