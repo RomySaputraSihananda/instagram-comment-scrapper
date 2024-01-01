@@ -7,7 +7,7 @@ Get all comments from instagram post url or id
 
 ## Requirements
 
-- **Python >= 3.11.4**
+- \*_Python >= 3.11.4_
 - **Requests >= 2.31.0**
 
 ## Installation
