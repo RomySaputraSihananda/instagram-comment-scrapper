@@ -1,4 +1,5 @@
 import os
+import re
 
 from comment import Comment
 from argparse import ArgumentParser
@@ -13,7 +14,7 @@ if(__name__ == '__main__'):
     argp.add_argument("--output", '-o', type=str, default='data')
     args = argp.parse_args()
 
-    post_id: str = args.url
+    post_id: str = (match := re.compile(r'https://www\.instagram\.com/(p|reel)/([^/?]+)|([^/]+)$').search(args.url)) and (match.group(2) or match.group(3)) 
 
     comment: Comment = Comment(args.cookie)
 
