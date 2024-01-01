@@ -2,7 +2,7 @@
 
 # instagram-comment-scrapper
 
-![](https://raw.githubusercontent.com/RomySaputraSihananda/RomySaputraSihananda/main/images/GA-U-u2bsAApmn9.jpeg)
+![](https://raw.githubusercontent.com/RomySaputraSihananda/RomySaputraSihananda/main/images/F898w0xaYAA_w2x.jpg)
 Get all comments from instagram post url or id
 
 ## Requirements
@@ -39,7 +39,7 @@ python main.py --url=Cm2cJmABD1p --output=data --cookie=cookie
 
 ## Sample Output
 
-![](https://raw.githubusercontent.com/RomySaputraSihananda/RomySaputraSihananda/main/images/Screenshot_20231211_001804.png)
+![](https://raw.githubusercontent.com/RomySaputraSihananda/RomySaputraSihananda/main/images/Screenshot_20240101_203552.png)
 
 ```json
 {
