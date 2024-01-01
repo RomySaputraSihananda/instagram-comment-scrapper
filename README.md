@@ -26,16 +26,16 @@ pip install -r requirements.txt
 ## Example Usages
 
 ```sh
-python main.py --url=7170139292767882522 --output=data
+python main.py --url=Cm2cJmABD1p --output=data --cookie=cookie
 ```
 
 ### Flags
 
-| Flag     | Alias |            Description            | Example         |       Default       |
-| :------- | :---: | :-------------------------------: | :-------------- | :-----------------: |
-| --url    |  -u   | Url or post id of instagram video | --url=id or url | 7170139292767882522 |
-| --cookie |  -c   |     yout cookie of instagram      | --cookie=cookie |        None         |
-| --output |  -o   |       json file output path       | --output=data   |        data         |
+| Flag     | Alias |            Description            | Example         |   Default   |
+| :------- | :---: | :-------------------------------: | :-------------- | :---------: |
+| --url    |  -u   | Url or post id of instagram video | --url=id or url | Cm2cJmABD1p |
+| --cookie |  -c   |     yout cookie of instagram      | --cookie=cookie |    None     |
+| --output |  -o   |       json file output path       | --output=data   |    data     |
 
 ## Sample Output
 
